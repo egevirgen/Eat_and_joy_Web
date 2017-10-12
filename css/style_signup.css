@@ -34,15 +34,15 @@ bizim_firma_adi2 {
 }
 
 #login-box {
-  width: 500px;
+  width: 470px;
   margin: 0px auto;
   background: #FFF;
-  height: 600px;
+  height: 490px;
   position: absolute;
   left:50%;
   top:50%;    
-  margin-left: -250px;
-  margin-top:-250px;
+  margin-left: -235px;
+  margin-top:-200px;
  
   border-radius: 2px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
@@ -69,12 +69,12 @@ input[type="password"],
 input[type="email"]{
   display: block;
   box-sizing: border-box;
-  margin-bottom: 35px;
+  margin-bottom: 30px;
   padding: 4px;
-  width: 400px;
+  width: 380px;
   height: 32px;
   border: none;
-  margin-top: 35px;    
+  margin-top: 24px;    
   border-bottom: 1px solid #AAA;
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
@@ -109,7 +109,7 @@ input[type="submit"] {
 font-size: 17px;
   transition: 0.5s ease;
   cursor: pointer;
-      margin-left: 310px;
+      margin-left: 290px;
 }
 
 input[type="submit"]:hover,
@@ -123,75 +123,4 @@ input[type="submit"]:active {
   opacity: 1;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
   transition: 0.1s ease;
-}
-
-.or {
-  position: absolute;
-  top: 180px;
-  left: 280px;
-  width: 40px;
-  height: 40px;
-  background: #DDD;
-  border-radius: 50%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-  line-height: 40px;
-  text-align: center;
-}
-
-.right {
-  position: absolute;
-  top: 0;
-  right: 0;
-  box-sizing: border-box;
-  padding: 40px;
-  width: 300px;
-  height: 400px;
-  background: url('https://goo.gl/YbktSj');
-  background-size: cover;
-  background-position: center;
-  border-radius: 0 2px 2px 0;
-}
-
-.right .loginwith {
-  display: block;
-  margin-bottom: 40px;
-  font-size: 28px;
-  color: #FFF;
-  text-align: center;
-}
-
-button.social-signin {
-  margin-bottom: 20px;
-  width: 220px;
-  height: 36px;
-  border: none;
-  border-radius: 2px;
-  color: #FFF;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 500;
-  transition: 0.2s ease;
-  cursor: pointer;
-}
-
-button.social-signin:hover,
-button.social-signin:focus {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-  transition: 0.2s ease;
-}
-
-button.social-signin:active {
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
-  transition: 0.2s ease;
-}
-
-button.social-signin.facebook {
-  background: #32508E;
-}
-
-button.social-signin.twitter {
-  background: #55ACEE;
-}
-
-button.social-signin.google {
-  background: #DD4B39;
 }
