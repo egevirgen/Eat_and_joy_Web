@@ -36,6 +36,11 @@ body {
 hgroup { 
 	text-align:center;
 	margin-top: 80px;
+	  -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein 2s; /* Firefox < 16 */
+        -ms-animation: fadein 2s; /* Internet Explorer */
+         -o-animation: fadein 2s; /* Opera < 12.1 */
+            animation: fadein 2s;    	
 }
 bizim_firma_adi1 {
     font-size: 60px;
