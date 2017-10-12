@@ -24,11 +24,13 @@
   <div class="left">
     <h1>Oturum Aç</h1>
     
-    <input type="text" name="email" placeholder="E-mail" id="email" />
-    <input type="password" name="password" placeholder="Şifre" id="password" />
+     <form>
+    <input type="email" name="email" placeholder="E-mail" id="email"  required />
+    <input type="password" name="password" placeholder="Şifre" id="password"  pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{0.1,5}$" maxlength="8" required />
     <input type="submit" name="signin" value="Oturum Aç" id="oturum_ac"  />
     <input type="submit" name="signup" value="Hesap Oluştur" id="hesap_olustur"  />
     <input type="submit" name="forgot" value="Parolanızı mı unuttunuz?" id="forgot_password"  />
+     </form>
   </div>
     </div>
     
