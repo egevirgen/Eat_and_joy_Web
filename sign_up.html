@@ -22,13 +22,15 @@
   <div class="left">
     <h1>Hesap Oluştur</h1>
     
-    <input type="text" name="firma_adi" id="firma_adi_id" placeholder="Firma Adı" />
-    <input type="email" name="email" id="email" placeholder="E-mail" />
-    <input type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' name="telno" id="telefon_numarasi" placeholder="Telefon Numarası" />
-    <input type="password" name="password" id="sifre" placeholder="Şifre" />
-    <input type="password" name="password2" id="sifre_tekrar" placeholder="Şifrenizi Tekrar Girin" />
+    <form>
+    <input type="text" name="firma_adi" id="firma_adi_id" placeholder="Firma Adı" required/>
+    <input type="email" name="email" id="email" placeholder="E-mail" required/>
+    <input type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' name="telno" id="telefon_numarasi" placeholder="telefon numarası"   required />
+    <input type="password" name="password" id="sifre" placeholder="Şifre" maxlength="8" required />
+    <input type="password" name="password2" id="sifre_tekrar" placeholder="Şifrenizi Tekrar Girin" maxlength="8" required/>
     
     <input type="submit" name="signup_submit" id="ileri" value="İleri"  />
+        </form>
   </div>
 
 </div>
