@@ -24,14 +24,28 @@
   <div class="left">
     <h1>Oturum Aç</h1>
     
-    <input type="text" name="email" placeholder="E-mail" />
-    <input type="password" name="password" placeholder="Şifre" />
+    <input type="text" name="email" placeholder="E-mail" id="email" />
+    <input type="password" name="password" placeholder="Şifre" id="password" />
     <input type="submit" name="signin" value="Oturum Aç" id="oturum_ac"  />
     <input type="submit" name="signup" value="Hesap Oluştur" id="hesap_olustur"  />
     <input type="submit" name="forgot" value="Parolanızı mı unuttunuz?" id="forgot_password"  />
   </div>
     </div>
-   
+    
+    
+<script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBt6rO3GpqUGCgdvOxMcoWgYpVAug6zxc8",
+    authDomain: "selforder-151717.firebaseapp.com",
+    databaseURL: "https://selforder-151717.firebaseio.com",
+    projectId: "selforder-151717",
+    storageBucket: "selforder-151717.appspot.com",
+    messagingSenderId: "755595392106"
+  };
+  firebase.initializeApp(config);
+</script>
     <script src="scripts/login.js"></script>
 </body>
 </html>
