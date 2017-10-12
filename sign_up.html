@@ -23,16 +23,31 @@
     <h1>Hesap Oluştur</h1>
     
     <input type="text" name="firma_adi" id="firma_adi_id" placeholder="Firma Adı" />
-    <input type="text" name="username" placeholder="Kullanıcı Adı" />
-    <input type="email" name="email" placeholder="E-mail" />
-    <input type="text" name="email" placeholder="Telefon Numarası" />
-    <input type="password" name="password" placeholder="Şifre" />
-    <input type="password" name="password2" placeholder="Şifrenizi Tekrar Girin" />
+    <input type="email" name="email" id="email" placeholder="E-mail" />
+    <input type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' name="telno" id="telefon_numarasi" placeholder="Telefon Numarası" />
+    <input type="password" name="password" id="sifre" placeholder="Şifre" />
+    <input type="password" name="password2" id="sifre_tekrar" placeholder="Şifrenizi Tekrar Girin" />
     
-    <input type="submit" name="signup_submit" value="İleri"  />
+    <input type="submit" name="signup_submit" id="ileri" value="İleri"  />
   </div>
 
 </div>
+    
+    
+<script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBt6rO3GpqUGCgdvOxMcoWgYpVAug6zxc8",
+    authDomain: "selforder-151717.firebaseapp.com",
+    databaseURL: "https://selforder-151717.firebaseio.com",
+    projectId: "selforder-151717",
+    storageBucket: "selforder-151717.appspot.com",
+    messagingSenderId: "755595392106"
+  };
+  firebase.initializeApp(config);
+</script>
+        <script src="scripts/signup.js"></script>
 </body>
 
 </html>
