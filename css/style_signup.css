@@ -22,10 +22,10 @@ body {
 
 @media screen and (max-height:948px) {
 #login-box {
-      -moz-transform: scale(0.8);
-   -webkit-transform: scale(0.8);
-   -o-transform: scale(0.8);
-   transform: scale(0.8);
+      -moz-transform: scale(0.85);
+   -webkit-transform: scale(0.85);
+   -o-transform: scale(0.85);
+   transform: scale(0.85);
   }
     
 }
