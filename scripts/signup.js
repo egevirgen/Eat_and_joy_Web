@@ -47,34 +47,9 @@ submit.addEventListener('click', function () {
     else{
 
     progress.style.visibility='visible';
-    firebase.auth().createUserWithEmailAndPassword(email.value, password.value).catch(function(error) {
-  // Handle Errors here.
-    progress.style.visibility='hidden';     
-  var errorMessage = error.message;
-  console.log(errorMessage);
-  if(errorMessage.includes("The email address is badly formatted.")){
-            email_hata.innerHTML="Lütfen E-mail adresinizi kontrol edin"
-        }
-  if(errorMessage.includes("The password must be 6 characters long or more.")){
-            sifre_hata.innerHTML="Şifre en az 6 karakter olmalıdır"
-        }
-   if(errorMessage.includes("Password should be at least 6 characters")){
-            sifre_hata.innerHTML="Şifre en az 6 karakter olmalıdır"
-        }        
-  if(errorMessage.includes("The email address is already in use by another account.")){
-            email_hata.innerHTML="E-mail halihazırda kullanılıyor"
-        }
-  if(errorMessage.includes("A network error (such as timeout, interrupted connection or unreachable host) has occurred.")){
-              genel_hata.innerHTML="Bağlantı hatası"
-        }        
-});
-    }
-
-}, false);
-
-
-firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
+    firebase.auth().createUserWithEmailAndPassword(email.value, password.value).then(function(){
+        var user = firebase.auth().currentUser;
+          if (user) {
         database.ref('Companies/' + user.uid).set({
             
     company_name: firma_adi.value,
@@ -103,4 +78,28 @@ firebase.auth().onAuthStateChanged(function(user) {
    
 
   } 
+    }).catch(function(error) {
+  // Handle Errors here.
+    progress.style.visibility='hidden';     
+  var errorMessage = error.message;
+  console.log(errorMessage);
+  if(errorMessage.includes("The email address is badly formatted.")){
+            email_hata.innerHTML="Lütfen E-mail adresinizi kontrol edin"
+        }
+  if(errorMessage.includes("The password must be 6 characters long or more.")){
+            sifre_hata.innerHTML="Şifre en az 6 karakter olmalıdır"
+        }
+   if(errorMessage.includes("Password should be at least 6 characters")){
+            sifre_hata.innerHTML="Şifre en az 6 karakter olmalıdır"
+        }        
+  if(errorMessage.includes("The email address is already in use by another account.")){
+            email_hata.innerHTML="E-mail halihazırda kullanılıyor"
+        }
+  if(errorMessage.includes("A network error (such as timeout, interrupted connection or unreachable host) has occurred.")){
+              genel_hata.innerHTML="Bağlantı hatası"
+        }        
 });
+    }
+
+}, false);
+
