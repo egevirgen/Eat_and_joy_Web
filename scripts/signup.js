@@ -17,6 +17,13 @@ var verification_text = document.getElementById("verification_content");
 var verification = document.getElementById("verification");
 progress.style.visibility='hidden';
 
+$(document).keypress(function (e) {
+    if (e.which == 13) {
+        submit.click()
+    }
+});
+
+
 telefon.maxLength="10";
 telefon_hata.style.color = 'blue';
 telefon_hata.innerHTML="Telefon numaranızı başında sıfır olmadan yazınız";
