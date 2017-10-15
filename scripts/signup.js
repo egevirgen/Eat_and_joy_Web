@@ -4,38 +4,68 @@ var email = document.getElementById("email");
 var telefon = document.getElementById("telefon_numarasi");
 var password = document.getElementById("sifre");
 var password_repeat = document.getElementById("sifre_tekrar");
+var firma_adi_hata = document.getElementById("hata1");
+var email_hata = document.getElementById("hata2");
+var telefon_hata = document.getElementById("hata3");
+var sifre_hata = document.getElementById("hata4");
+var genel_hata = document.getElementById("hata6");
 var submit = document.getElementById("ileri");
 var database = firebase.database();
+var progress = document.getElementById("progress");
+var loginbox = document.getElementById("login-box");
+var verification_text = document.getElementById("verification_content");
+var verification = document.getElementById("verification");
+progress.style.visibility='hidden';
 
 telefon.maxLength="10";
+telefon_hata.style.color = 'blue';
+telefon_hata.innerHTML="Telefon numaranızı başında sıfır olmadan yazınız";
 
 // kayıt olma click listener
 submit.addEventListener('click', function () { 
+    
+    firma_adi_hata.innerHTML="";
+    email_hata.innerHTML="";
+    telefon_hata.style.color = 'blue';
+    if(telefon.value.length!=10)
+    telefon_hata.innerHTML="Telefon numaranızı başında sıfır olmadan yazınız";
+    else
+    telefon_hata.innerHTML="";
+    sifre_hata.innerHTML="";
+    genel_hata.innerHTML="";
+    
     if(firma_adi.value === ""){
-        console.log("firma adı boş");
+        firma_adi_hata.innerHTML="Firma adı boş olamaz"
     }
-    else if(telefon.value.length<10){
-         console.log("Telefon numarası eksik veya hatalı girildi");    
+    if(telefon.value.length<10){
+         telefon_hata.style.color = 'red';
+         telefon_hata.innerHTML = "Telefon numarası hatalı girildi";    
             }
-    else if(password.value != password_repeat.value){
-        console.log("passwords are not equal");
+    if(password.value != password_repeat.value){
+        sifre_hata.innerHTML="Şifreler uyuşmuyor"
     }
     else{
+
+    progress.style.visibility='visible';
     firebase.auth().createUserWithEmailAndPassword(email.value, password.value).catch(function(error) {
   // Handle Errors here.
+    progress.style.visibility='hidden';     
   var errorMessage = error.message;
   console.log(errorMessage);
   if(errorMessage.includes("The email address is badly formatted.")){
-            console.log(errorMessage);
+            email_hata.innerHTML="Lütfen E-mail adresinizi kontrol edin"
         }
   if(errorMessage.includes("The password must be 6 characters long or more.")){
-            console.log(errorMessage);
+            sifre_hata.innerHTML="Şifre en az 6 karakter olmalıdır"
         }
+   if(errorMessage.includes("Password should be at least 6 characters")){
+            sifre_hata.innerHTML="Şifre en az 6 karakter olmalıdır"
+        }        
   if(errorMessage.includes("The email address is already in use by another account.")){
-            console.log(errorMessage);
+            email_hata.innerHTML="E-mail halihazırda kullanılıyor"
         }
   if(errorMessage.includes("A network error (such as timeout, interrupted connection or unreachable host) has occurred.")){
-            console.log(errorMessage);
+              genel_hata.innerHTML="Bağlantı hatası"
         }        
 });
     }
@@ -57,12 +87,18 @@ firebase.auth().onAuthStateChanged(function(user) {
         firebase.auth().signOut().then(function() {
             console.log('Signed Out');
             // Burda mail gönderildi git kabul et vs denicek
+            verification_text.innerHTML = "Eat & Joy paneline başarıyla kayıt oldunuz. '" + email.value + "' adresine hesabınızı aktif edebilmeniz için bir e-mail gönderdik. İlgili linke tıkladığınızda hesabınız aktif olacak ve paneli kullanmaya başlayabileceksiniz."
+            loginbox.style.visibility='hidden';
+            verification.style.opacity='1';
+            progress.style.visibility='hidden';
         }, function(error) {
             console.error('Sign Out Error', error);
+            progress.style.visibility='hidden';
         });
 
     }).catch(function(error) {
   // An error happened.
+            progress.style.visibility='hidden';
         console.log("error");
 });     
         });
