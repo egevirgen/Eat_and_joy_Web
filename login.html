@@ -7,7 +7,8 @@
 
 	<!-- Google Fonts -->
 	<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900' rel='stylesheet' type='text/css'>
-
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.amber-orange.min.css" />   <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 	<!-- Custom Stylesheet -->
 	<link rel="stylesheet" href="css/style_login.css">
 
@@ -15,20 +16,27 @@
 </head>
 
 <body>
-    
+
 <hgroup>
   <bizim_firma_adi1>Eat &amp; </bizim_firma_adi1>
   <bizim_firma_adi2>Joy</bizim_firma_adi2>
 </hgroup>
+  
 <div id="login-box">
+      <div id="progress" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
   <div class="left">
     <h1>Oturum Aç</h1>
     
     <input type="email" name="email" placeholder="E-mail" id="email"  />
+      <hata1 id="hata1"></hata1>
     <input type="password" name="password" placeholder="Şifre" id="password" />
+      <hata2 id="hata2"></hata2>
     <input type="submit" name="signin" value="Oturum Aç" id="oturum_ac"  />
     <input type="submit" name="signup" value="Hesap Oluştur" id="hesap_olustur"  />
+        <hata3 id="hata3"></hata3>
     <input type="submit" name="forgot" value="Parolanızı mı unuttunuz?" id="forgot_password"  />
+
+</div>
  
   </div>
     </div>
