@@ -10,6 +10,12 @@ var genel_hata = document.getElementById("hata3");
 var progress = document.getElementById("progress");
 progress.style.visibility='hidden';
 
+$(document).keypress(function (e) {
+    if (e.which == 13) {
+        oturum_ac.click()
+    }
+});
+
 
 // oturum açma click listener
 oturum_ac.addEventListener('click', function () {
