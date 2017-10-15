@@ -22,6 +22,7 @@ oturum_ac.addEventListener('click', function () {
         if(firebase.auth().currentUser.emailVerified)
             {
                 // diğer sayfaya geçilsin
+            window.open ('order.html','_self',false)
             }
         else{
             progress.style.visibility='hidden';
@@ -48,6 +49,9 @@ oturum_ac.addEventListener('click', function () {
         else if(errorMessage.includes("We have blocked all requests from this device due to unusual activity. Try again later.")){
             genel_hata.innerHTML="Cihaz geçici olarak bloke edildi"
         }
+        else if(errorMessage.includes("The user account has been disabled by an administrator.")){
+            genel_hata.innerHTML="Bu hesap yönetici tarafından askıya alındı"
+        }
        
   
 });
@@ -65,13 +69,5 @@ hesap_olustur.addEventListener('click', function () {
 sifre_unuttum.addEventListener('click', function () { 
     
 }, false);
-
-// oturum açma durum kontrolörü
-firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
-      console.log(user)
-   // Yeni sayfaya atlayacak
-  } 
-});
 
 
