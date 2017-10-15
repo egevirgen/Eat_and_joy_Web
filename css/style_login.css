@@ -85,7 +85,7 @@ h3 { color: #4a89dc; }
   left: 0;
   box-sizing: border-box;
   padding: 40px;
-  width: 300px;
+  width: 100%;
   height: 400px;
 }
 
@@ -100,12 +100,13 @@ input#forgot_password {
     color: #0060ff;
     text-decoration: underline;
     box-shadow: none;
-        margin-top: 30px;
+        margin-top: 20px;
 
 }
 
 input#hesap_olustur {
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 input[type="text"],
@@ -113,18 +114,25 @@ input[type="password"],
 input[type="email"]{
   display: block;
   box-sizing: border-box;
-  margin-bottom: 35px;
   padding: 4px;
   width: 390px;
   height: 32px;
   border: none;
-  margin-top: 40px;    
+  margin-top: 20px; 
+  margin-bottom: 5px;    
   border-bottom: 1px solid #AAA;
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
   font-size: 15px;
   transition: 0.2s ease;
 }
+hata1, hata2, hata3 {
+    color: red;
+    margin-left: 4px;
+    font-size: 13px;
+
+}
+
 
 input#firma_adi_id {
     text-transform: capitalize;
@@ -145,7 +153,7 @@ input[type="submit"] {
   border: none;
   border-radius: 3px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-  margin-top: 15px;
+  margin-top: 25px;
   color: #FFF;
       font-family: 'Roboto', sans-serif;
 
@@ -167,76 +175,4 @@ input[type="submit"]:active {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
   transition: 0.1s ease;
 }
-
-.or {
-  position: absolute;
-  top: 180px;
-  left: 280px;
-  width: 40px;
-  height: 40px;
-  background: #DDD;
-  border-radius: 50%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-  line-height: 40px;
-  text-align: center;
-}
-
-.right {
-  position: absolute;
-  top: 0;
-  right: 0;
-  box-sizing: border-box;
-  padding: 40px;
-  width: 300px;
-  height: 400px;
-  background: url('https://goo.gl/YbktSj');
-  background-size: cover;
-  background-position: center;
-  border-radius: 0 2px 2px 0;
-}
-
-.right .loginwith {
-  display: block;
-  margin-bottom: 40px;
-  font-size: 28px;
-  color: #FFF;
-  text-align: center;
-}
-
-button.social-signin {
-  margin-bottom: 20px;
-  width: 220px;
-  height: 36px;
-  border: none;
-  border-radius: 2px;
-  color: #FFF;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 500;
-  transition: 0.2s ease;
-  cursor: pointer;
-}
-
-button.social-signin:hover,
-button.social-signin:focus {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-  transition: 0.2s ease;
-}
-
-button.social-signin:active {
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
-  transition: 0.2s ease;
-}
-
-button.social-signin.facebook {
-  background: #32508E;
-}
-
-button.social-signin.twitter {
-  background: #55ACEE;
-}
-
-button.social-signin.google {
-  background: #DD4B39;
-}
-
 
