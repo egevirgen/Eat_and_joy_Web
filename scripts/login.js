@@ -4,10 +4,19 @@ var oturum_ac = document.getElementById("oturum_ac");
 var sifre_unuttum = document.getElementById("forgot_password");
 var email = document.getElementById("email");
 var sifre = document.getElementById("password");
+var email_hata = document.getElementById("hata1");
+var sifre_hata = document.getElementById("hata2");
+var genel_hata = document.getElementById("hata3");
+var progress = document.getElementById("progress");
+progress.style.visibility='hidden';
 
 
 // oturum açma click listener
 oturum_ac.addEventListener('click', function () {
+    progress.style.visibility='visible';
+    email_hata.innerHTML="";
+    sifre_hata.innerHTML="";
+    genel_hata.innerHTML="";
    
     firebase.auth().signInWithEmailAndPassword(email.value, sifre.value).then(function() {
         if(firebase.auth().currentUser.emailVerified)
@@ -15,25 +24,31 @@ oturum_ac.addEventListener('click', function () {
                 // diğer sayfaya geçilsin
             }
         else{
+            progress.style.visibility='hidden';
             firebase.auth().signOut();
-            console.log("Mailinizi verify etmemişsiniz yav")
+            genel_hata.innerHTML="Hesabınız aktif değil"
         }
     }).catch(function(error) {
   // Hata mesajı handle etme
         var errorMessage = error.message;
-         
-        if(errorMessage.includes("The email address is badly formatted.")){
-            console.log(errorMessage);
-        }
-        if(errorMessage.includes("There is no user record corresponding to this identifier. The user may have been deleted.")){
-            console.log(errorMessage);
-        }
-        if(errorMessage.includes("The password is invalid or the user does not have a password.")){
-            console.log(errorMessage);
-        }
+        console.log(errorMessage)
+        progress.style.visibility='hidden'; 
         if(errorMessage.includes("A network error (such as timeout, interrupted connection or unreachable host) has occurred.")){
-            console.log(errorMessage);
+            genel_hata.innerHTML="Bağlantı hatası"
         }
+        else if(errorMessage.includes("The email address is badly formatted.")){
+            email_hata.innerHTML="Lütfen E-mail adresinizi kontrol edin"
+        }
+        else if(errorMessage.includes("There is no user record corresponding to this identifier. The user may have been deleted.")){
+            email_hata.innerHTML="E-mail adresi bulunamadı"
+        }
+        else if(errorMessage.includes("The password is invalid or the user does not have a password.")){
+            sifre_hata.innerHTML="Şifrenizi kontrol edin"
+        }
+        else if(errorMessage.includes("We have blocked all requests from this device due to unusual activity. Try again later.")){
+            genel_hata.innerHTML="Cihaz geçici olarak bloke edildi"
+        }
+       
   
 });
     
@@ -41,7 +56,7 @@ oturum_ac.addEventListener('click', function () {
 
 // kayıt olma click listener
 hesap_olustur.addEventListener('click', function () { 
-    
+    progress.style.visibility='visible';
     window.open ('sign_up.html','_self',false)
 
 }, false);
@@ -54,10 +69,9 @@ sifre_unuttum.addEventListener('click', function () {
 // oturum açma durum kontrolörü
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
+      console.log(user)
    // Yeni sayfaya atlayacak
-  } else {
-   // User girişi yapılmamış bu sayfada kalacak
-  }
+  } 
 });
 
 
