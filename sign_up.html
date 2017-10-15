@@ -7,9 +7,10 @@
 
 	<!-- Google Fonts -->
 	<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900' rel='stylesheet' type='text/css'>
-
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.amber-orange.min.css" />   
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 	<link rel="stylesheet" href="css/style_signup.css">
-
+  
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
 
@@ -18,18 +19,27 @@
   <bizim_firma_adi1>Eat &amp; </bizim_firma_adi1>
   <bizim_firma_adi2>Joy</bizim_firma_adi2>
 </hgroup>
+    <div class="verification" id="verification">
+        <h1 id="verification_header"> Size bir onay maili gönderdik!</h1> 
+        <h10 id="verification_content" ></h10> 
+    </div>    
 	<div id="login-box">
+            <div id="progress" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
   <div class="left">
+    
     <h1>Hesap Oluştur</h1>
     
     <input type="text" name="firma_adi" id="firma_adi_id" placeholder="Firma Adı" />
+      <hata1 id="hata1"></hata1>
     <input type="email" name="email" id="email" placeholder="E-mail" />
+      <hata2 id="hata2"></hata2>
     <input type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' name="telno" id="telefon_numarasi" placeholder="Telefon Numarası"  />
+      <hata3 id="hata3"></hata3>
     <input type="password" name="password" id="sifre" placeholder="Şifre" />
+      <hata4 id="hata4"></hata4>
     <input type="password" name="password2" id="sifre_tekrar" placeholder="Şifrenizi Tekrar Girin" />
-    
     <input type="submit" name="signup_submit" id="ileri" value="İleri"  />
-   
+      <hata6 id="hata6"></hata6>
   </div>
 
 </div>
