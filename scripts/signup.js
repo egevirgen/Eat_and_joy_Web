@@ -87,9 +87,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         firebase.auth().signOut().then(function() {
             console.log('Signed Out');
             // Burda mail gönderildi git kabul et vs denicek
-            verification_text.innerHTML = "Eat & Joy paneline başarıyla kayıt oldunuz. '" + email.value + "' adresine hesabınızı aktif edebilmeniz için bir e-mail gönderdik. İlgili linke tıkladığınızda hesabınız aktif olacak ve paneli kullanmaya başlayabileceksiniz."
-            loginbox.style.visibility='hidden';
-            verification.style.opacity='1';
+            window.open ('sign_up_success.html','_self',false)
             progress.style.visibility='hidden';
         }, function(error) {
             console.error('Sign Out Error', error);
