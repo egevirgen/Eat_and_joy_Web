@@ -1,0 +1,56 @@
+.mdl-layout__header-row {
+    background: #db4437;
+}
+.mdl-layout__drawer-button {
+    background: #db4437 !important;
+}
+i.material-icons {
+    color: white;
+}
+span.mdl-layout-title {
+    color: white;
+}
+main.mdl-layout__content {
+    background: #f5f5f5;
+}
+a#list1 {
+    color: #db4437;
+}
+.mdl-layout__header .mdl-layout__drawer-button {
+    margin-left: 10px !important;
+}
+span.mdl-layout-title {
+    margin-left: 20px !important;
+}
+.mdl-layout__drawer {
+    width: 270px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.34), 0 3px 1px -2px rgba(0,0,0,.4), 0 1px 5px 0 rgba(0,0,0,.32);
+    -webkit-transform: translateX(-270px);
+    transform: translateX(-270px);
+}
+.mdl-navigation__link .material-icons {
+    margin-left: -15px;
+    margin-right: 20px;
+    vertical-align: middle;
+}
+.mdl-navigation__link {
+    font-size: 12px;
+    font-weight: bolder;
+}
+bizim_firma_adi1 {
+    font-size: 35px;
+    font-family: serif;
+    color: #212121;
+}
+
+bizim_firma_adi2 {
+    font-family: sans-serif;
+    font-size: 35px;
+    color: #212121;
+    font-weight: bold;
+}
+hgroup { 
+	text-align:center;
+	margin-top: 25px;
+    margin-bottom: 5px;
+}
