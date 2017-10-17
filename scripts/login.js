@@ -28,7 +28,7 @@ oturum_ac.addEventListener('click', function () {
         if(firebase.auth().currentUser.emailVerified)
             {
                 // diğer sayfaya geçilsin
-            window.open ('order.html','_self',false)
+            window.open ('ana_sayfa.html','_self',false)
             }
         else{
             progress.style.visibility='hidden';
@@ -73,6 +73,8 @@ hesap_olustur.addEventListener('click', function () {
 
 // şifre unuttum click listener
 sifre_unuttum.addEventListener('click', function () { 
+     progress.style.visibility='visible';
+    window.open ('sifre_yenileme.html','_self',false)
     
 }, false);
 
