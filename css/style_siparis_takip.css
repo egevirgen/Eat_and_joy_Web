@@ -22,11 +22,15 @@ a#list1 {
 span.mdl-layout-title {
     margin-left: 20px !important;
 }
+.mdl-layout--fixed-drawer>.mdl-layout__content {
+    margin-left: 270px;
+}
 .mdl-layout__drawer {
     width: 270px;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,.34), 0 3px 1px -2px rgba(0,0,0,.4), 0 1px 5px 0 rgba(0,0,0,.32);
     -webkit-transform: translateX(-270px);
     transform: translateX(-270px);
+       overflow-y: hidden;
 }
 .mdl-navigation__link .material-icons {
     margin-left: -15px;
