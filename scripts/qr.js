@@ -1,6 +1,28 @@
 var profile_dialog = document.getElementById("profile_dialog");
-var dialog_var = document.getElementById("dialog");
 var dialog = document.querySelector('dialog');
+var signout = document.getElementById("ileri");
+
+var dialogprofilephoto = document.getElementById("dialog-profile-photo");
+var dialogprofilename = document.getElementById("dialog-profile-name");
+var dialogprofileemail = document.getElementById("dialog-profile-email");
+
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+      return firebase.database().ref('/Companies/' + user.uid).once('value').then(function(snapshot) {
+      dialogprofilename.innerHTML=snapshot.val().company_name
+      dialogprofileemail.innerHTML=snapshot.val().company_email
+});
+      
+  } else {
+    window.open ('index.html','_self',false)
+  }
+});
+
+signout.addEventListener('click', function (){
+                          firebase.auth().signOut().then(function() {
+            window.open ('index.html','_self',false)
+        }); });
+
 
 if (! dialog.showModal) {
       dialogPolyfill.registerDialog(dialog);
