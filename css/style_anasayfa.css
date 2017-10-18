@@ -29,7 +29,7 @@ a#list1 {
 .dialog-profile-container {
     margin-top: 4px;
     margin-left: 24px;
-        line-height: 21px;
+        line-height: 22px;
 }
 .dialog-profile-link {
     font-size: 13px;
@@ -51,9 +51,12 @@ input[type="submit"] {
       transition: 0.5s ease;
 
 }
+.mdl-layout__drawer.is-visible .mdl-navigation .mdl-navigation__link {
+    padding-left: 40px;
+}
 input[type="submit"]:hover,
 input[type="submit"]:focus {
-  background-color: #cccccc73;
+      background-color: rgba(158, 158, 158, 0.2);
   transition: 0.5s ease;
 }
 
@@ -128,6 +131,7 @@ span.mdl-layout-title {
 .mdl-navigation__link {
     font-size: 12px;
     font-weight: bolder;
+     transition: 0.5s ease;
 }
 .content {
     margin-left: 60px;
