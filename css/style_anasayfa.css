@@ -19,8 +19,8 @@ a#list1 {
 .mdl-dialog {
     border-radius: 3px;
     top: 7%;
-    width: fit-content !important;
-    left: 67%;
+    width: 25% !important;
+    left: 69%;
     box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
 }
 .modal.fade .mdl-dialog {
@@ -36,6 +36,14 @@ a#list1 {
 }
 .mdl-dialog::backdrop {
     position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255,255,255,0);
+}
+.mdl-dialog + .backdrop { /* polyfill */
+   position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -65,8 +73,8 @@ span.mdl-layout-title {
     font-size: 12px;
     font-weight: bolder;
 }
-.mdl-layout--fixed-drawer>.mdl-layout__content {
-    margin-left: 270px;
+.content {
+    margin-left: 60px;
 }
 bizim_firma_adi1 {
     font-size: 35px;
