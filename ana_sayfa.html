@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"  style="overflow: hidden; position: relative; width: 1920px; height: 949px;">
+<html lang="en">
 
 <head>
 	<meta charset="utf-8">
@@ -17,16 +17,16 @@
 <body>
     <div class="modal fade" id="dialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <dialog class="mdl-dialog">
-    <h4 class="mdl-dialog__title">Allow data collection?</h4>
-    <div class="mdl-dialog__content">
-      <p>
-        Allowing us to collect data will let us get you the information you want faster.
-      </p>
-    </div>
-    <div class="mdl-dialog__actions">
-      <button type="button" class="mdl-button">Agree</button>
-      <button type="button" class="mdl-button close">Disagree</button>
-    </div>
+      <div id="mdl-dialog-content">
+          <img class="dialog-profile-photo" src="adam.jpg">
+          <div class="dialog-profile-container">
+              <div class="dialog-profile-name">Ege Evirgen</div>
+          <div class="dialog-profile-email">egeirgen@gmail.com</div>
+          <a class="dialog-profile-link" href="profil.html">Profili Gör</a>
+          </div>
+      </div>
+       <hr id="dialog_line_1">
+       <input type="submit" name="signup_submit" id="ileri" value="Oturumu Kapat"  />
   </dialog>
         </div>
     <div>
@@ -73,6 +73,19 @@
   </main>
 </div></div>
     </div>
+    <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBt6rO3GpqUGCgdvOxMcoWgYpVAug6zxc8",
+    authDomain: "selforder-151717.firebaseapp.com",
+    databaseURL: "https://selforder-151717.firebaseio.com",
+    projectId: "selforder-151717",
+    storageBucket: "selforder-151717.appspot.com",
+    messagingSenderId: "755595392106"
+  };
+  firebase.initializeApp(config);
+</script>
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
       <script src="scripts/dialog-polyfill.js"></script>

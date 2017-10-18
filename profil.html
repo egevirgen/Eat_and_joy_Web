@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"  style="overflow: hidden; position: relative; width: 1920px; height: 949px;">
+<html lang="en">
 
 <head>
 	<meta charset="utf-8">
@@ -12,11 +12,24 @@
 	<!-- Custom Stylesheet -->
 	<link rel="stylesheet" href="css/style_profil.css">
 
-	
+	<link rel="stylesheet" type="text/css" href="css/dialog-polyfill.css" />
 </head>
 
 <body>
-
+ <div class="modal fade" id="dialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <dialog class="mdl-dialog">
+      <div id="mdl-dialog-content">
+          <img class="dialog-profile-photo" src="adam.jpg">
+          <div class="dialog-profile-container">
+              <div class="dialog-profile-name">Ege Evirgen</div>
+          <div class="dialog-profile-email">egeirgen@gmail.com</div>
+          <a class="dialog-profile-link" href="profil.html">Profili Gör</a>
+          </div>
+      </div>
+       <hr id="dialog_line_1">
+       <input type="submit" name="signup_submit" id="ileri" value="Oturumu Kapat"  />
+  </dialog>
+        </div>
     <div>
     <div> <!-- The drawer is always open in large screens. The header is always shown,
   even in small screens. -->
@@ -27,7 +40,7 @@
     <div class="mdl-layout__header-row">
          <span class="mdl-layout-title">Profil</span>
       <div class="mdl-layout-spacer"></div>
-        <label class="mdl-button mdl-js-button mdl-button--icon"
+        <label id="profile_dialog" class="mdl-button mdl-js-button mdl-button--icon"
                for="fixed-header-drawer-exp">
           <i class="material-icons">account_circle</i>
         </label>
@@ -76,6 +89,7 @@
 </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-     <script src="scripts/anasayfa.js"></script>
+      <script src="scripts/dialog-polyfill.js"></script>
+     <script src="scripts/profil.js"></script>
 </body>
 </html>
