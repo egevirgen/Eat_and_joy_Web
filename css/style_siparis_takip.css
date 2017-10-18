@@ -16,21 +16,109 @@ main.mdl-layout__content {
 a#list1 {
     color: #db4437;
 }
+.dialog-profile-photo {
+    border-radius: 36px;
+    height: 72px;
+    width: 72px;
+}
+.dialog-profile-name {
+    font-size: 15px;
+    font-weight: 400;
+
+}
+.dialog-profile-container {
+    margin-top: 4px;
+    margin-left: 24px;
+        line-height: 21px;
+}
+.dialog-profile-link {
+    font-size: 13px;
+    color: #15c;
+    text-decoration: none;
+    cursor: pointer;
+}
+input[type="submit"] {
+  width: 100%;
+    height: 33px;
+  background: unset;
+  border: none;
+  color: #000;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bolder;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: right;
+      transition: 0.5s ease;
+
+}
+input[type="submit"]:hover,
+input[type="submit"]:focus {
+  background-color: #cccccc73;
+  transition: 0.5s ease;
+}
+
+hr#dialog_line_1 {
+    margin-bottom: 0px;
+}
+.dialog-profile-email {
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 13px;
+    font-weight: 400;
+}
+div#mdl-dialog-content {
+    padding-left: 15px;
+    display: flex;
+}
+.mdl-dialog {
+        padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 2px;
+    border-radius: 3px;
+    top: 9%;
+    width: 365px !important;
+    left: 65%;
+    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+}
+.modal.fade .mdl-dialog {
+    transform-origin: right top;
+    opacity: 0;
+    -webkit-transform: scale(0);
+    -moz-transform: scale(0);
+    -ms-transform: scale(0);
+    transform: scale(0);
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+}
+.mdl-dialog::backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255,255,255,0);
+}
+.mdl-dialog + .backdrop { /* polyfill */
+   position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255,255,255,0);
+}
+
 .mdl-layout__header .mdl-layout__drawer-button {
     margin-left: 10px !important;
 }
 span.mdl-layout-title {
     margin-left: 20px !important;
 }
-.content {
-    margin-left: 60px;
-}
 .mdl-layout__drawer {
     width: 270px;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,.34), 0 3px 1px -2px rgba(0,0,0,.4), 0 1px 5px 0 rgba(0,0,0,.32);
     -webkit-transform: translateX(-270px);
     transform: translateX(-270px);
-       overflow-y: hidden;
+    overflow-y: hidden;
 }
 .mdl-navigation__link .material-icons {
     margin-left: -15px;
@@ -40,6 +128,9 @@ span.mdl-layout-title {
 .mdl-navigation__link {
     font-size: 12px;
     font-weight: bolder;
+}
+.content {
+    margin-left: 60px;
 }
 bizim_firma_adi1 {
     font-size: 35px;
@@ -57,4 +148,12 @@ hgroup {
 	text-align:center;
 	margin-top: 25px;
     margin-bottom: 5px;
+}
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500);
+*:focus {
+  outline: none;
+}
+html, body {margin:0; padding:0; width:100%; height:100%; overflow:hidden;}
+body{
+        font-family: 'Roboto', sans-serif;
 }
