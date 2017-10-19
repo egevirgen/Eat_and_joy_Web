@@ -6,11 +6,18 @@ var dialogprofilephoto = document.getElementById("dialog-profile-photo");
 var dialogprofilename = document.getElementById("dialog-profile-name");
 var dialogprofileemail = document.getElementById("dialog-profile-email");
 
+var firmaadivalue = document.getElementById("firma_adi_value");
+var firmaemailvalue = document.getElementById("firma_email_value");
+var firmatelefonvalue = document.getElementById("firma_telefon_value");
+
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
       return firebase.database().ref('/Companies/' + user.uid).once('value').then(function(snapshot) {
     dialogprofilename.innerHTML=snapshot.val().company_name
     dialogprofileemail.innerHTML=snapshot.val().company_email
+    firmaadivalue.innerHTML=snapshot.val().company_name
+    firmaemailvalue.innerHTML=snapshot.val().company_email
+    firmatelefonvalue.innerHTML=snapshot.val().company_phone
 });
   } else {
     window.open ('index.html','_self',false)
