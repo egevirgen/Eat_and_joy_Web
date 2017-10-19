@@ -162,6 +162,10 @@ font-size: 17px;
   transition: 0.5s ease;
   cursor: pointer;
 }
+hata1#hata1 {
+    width: 100%;
+    position: fixed;
+}
 
 input[type="submit"]:hover,
 input[type="submit"]:focus {

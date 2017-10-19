@@ -31,14 +31,15 @@ a#list1 {
     margin-left: 24px;
         line-height: 22px;
 }
-.mdl-layout__drawer.is-visible .mdl-navigation .mdl-navigation__link {
-    padding-left: 40px;
-}
+
 .dialog-profile-link {
     font-size: 13px;
     color: #15c;
     text-decoration: none;
     cursor: pointer;
+}
+.mdl-layout__drawer.is-visible .mdl-navigation .mdl-navigation__link {
+    padding-left: 40px;
 }
 input[type="submit"] {
   width: 100%;
@@ -61,6 +62,7 @@ input[type="submit"]:focus {
 }
 
 hr#dialog_line_1 {
+    margin-top: 20px;
     margin-bottom: 0px;
 }
 .dialog-profile-email {
@@ -73,13 +75,14 @@ div#mdl-dialog-content {
     display: flex;
 }
 .mdl-dialog {
-        padding-left: 10px;
+    padding-left: 10px;
     padding-right: 10px;
     padding-bottom: 2px;
     border-radius: 3px;
-    top: 9%;
+    top: 6%;
+    left: unset;
     width: 365px !important;
-    left: 65%;
+    right: 2%;
     box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
 }
 .modal.fade .mdl-dialog {
@@ -134,7 +137,7 @@ span.mdl-layout-title {
      transition: 0.5s ease;
 }
 .content {
-    margin-left: 60px;
+    margin-left: 30px;
 }
 bizim_firma_adi1 {
     font-size: 35px;
@@ -161,3 +164,119 @@ html, body {margin:0; padding:0; width:100%; height:100%; overflow:hidden;}
 body{
         font-family: 'Roboto', sans-serif;
 }
+/**/
+     *, ::after, ::before {
+            -webkit-box-sizing: inherit;
+            box-sizing: inherit;
+        }
+
+        html, body, ul, ol {
+            margin: 0;
+            padding: 0;
+        }
+
+        html>body {
+            font-family: 'Roboto','Helvetica','Arial',sans-serif!important;
+            background-color: #eeeeee;
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-size-adjust: 100%;
+            text-rendering: optimizeLegibility;
+            -webkit-text-rendering: optimizeLegibility;
+        }
+        h1{
+           font-weight: 400;
+           color: #999;
+           font-size: 18px;
+           margin: 48px 0 12px 22px;
+        }
+        div.panel{
+            max-width: 50%;
+            margin: auto;
+            margin-top: calc(5% - 0px);
+        }
+        details{
+            transition: cubic-bezier(0.4, 0, 0.2, 1) 200ms, opacity 200ms cubic-bezier(0.4, 0, 0.2, 1), transform 200ms cubic-bezier(0.4, 0, 0.2, 1);
+            background:#fff;
+            font-size:16px;
+            border-bottom:1px solid #e0e0e0;
+              box-shadow:0 0 2px rgba(0,0,0,0.12),0 2px 4px rgba(0,0,0,0.24);
+            display:flex; }
+
+        details div.content{
+            padding:0px 24px 24px 24px;
+        }
+
+        details[open] summary:after {
+            content: "expand_more";
+            font-family: 'Material Icons';
+            color: #9e9e9e;
+        }
+        details[open]{
+            margin-top:16px;
+            margin-bottom:16px;
+            border:none;
+            border-radius: 2px;
+
+
+        }
+        details[open]:first-child{
+            margin-top:0;
+            margin-bottom:16px;
+            border:none;
+        }
+        details[open]:last-child{
+            margin-top:16px;
+            margin-bottom:0px;
+            border:none;
+        }
+
+        summary{
+            outline:none;
+            cursor: pointer;
+            padding: 16px 24px;
+            color:#212121;
+            position: relative;
+            font-size: 15px;
+        }
+        summary:hover{
+            background:#eeeeee;
+        }
+
+        details[open] summary:hover{
+            background:none;
+        }
+        summary ul {
+            padding-left: 0;
+            list-style: none;
+            display: -webkit-flex;
+            display: flex;
+            align-items: center;
+        }
+        summary ul li{
+             flex: 1 100%;
+             flex-flow: row wrap;
+        }
+        summary ul li span{
+              display: block;
+              font-size: 12px;
+              margin-top: 6px;
+              opacity: .75;
+        }
+        summary::-webkit-details-marker {
+            display: none;
+        }
+        summary::after {
+            content: "create";
+            font-family: 'Material Icons';
+            color: #9e9e9e;
+            font-size: 1.5em;
+            padding: 0;
+            text-align: center;
+            margin-top: 0;
+            position: absolute;
+            top: calc(50% - 12px);
+            bottom: 0;
+            right: 5px;
+            width: 6%;
+        }  
+        .titleValue{ color: #757575; }  
