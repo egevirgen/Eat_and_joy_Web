@@ -13,6 +13,17 @@ span.mdl-layout-title {
 main.mdl-layout__content {
     background: #f5f5f5;
 }
+.mdl-button--fab {
+    display: block;
+    z-index: 9999;
+    margin-top: -60px;
+    left: 70px;
+    min-width: 56px;
+    background: #db4437f0;
+}
+.mdl-button:hover {
+    background-color: #ca3125;
+}
 a#list1 {
     color: #db4437;
 }
@@ -70,18 +81,37 @@ a#list1 {
     margin-top: 15px;
     border-top: 1px rgba(0, 0, 0, 0.12) solid;
 }
-input[type="firmaadi_"]:focus{
+input[type="firmaadi_"]:focus,input[type="password"]:focus,input[type="telefon"]:focus{
   border-bottom: 2px solid #4285f4;
   color: #4285f4;
   transition: 0.2s ease;
 }
-input[type="firmaadi_"] {
+summary#sabit::after, summary#summary_3::after {
+    content: "";
+}
+input[type="firmaadi_"], input[type="password"]{
     text-transform: capitalize;
     display: block;
     box-sizing: border-box;
     margin-top: 20px;
-    width: 240px;
+    width: 50%;
     height: 32px;
+    color: #757575;
+    border: none;
+    border-bottom: 1px solid #AAA;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    transition: 0.2s ease;
+}
+span#span_tel {
+    color: #757575;
+}
+input[type="telefon"] {
+    box-sizing: border-box;
+    margin-top: 20px;
+    width: 50%;
+    height: 32px;
+    color: #757575;
     border: none;
     border-bottom: 1px solid #AAA;
     font-family: 'Roboto', sans-serif;
@@ -131,7 +161,7 @@ div#mdl-dialog-content {
     padding-left: 15px;
     display: flex;
 }
-.mdl-dialog {
+.mdl-dialog#dialog1 {
     padding-left: 10px;
     padding-right: 10px;
     padding-bottom: 2px;
@@ -142,7 +172,7 @@ div#mdl-dialog-content {
     right: 2%;
     box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
 }
-.modal.fade .mdl-dialog {
+.modal.fade .mdl-dialog#dialog1 {
     transform-origin: right top;
     opacity: 0;
     -webkit-transform: scale(0);
@@ -153,7 +183,7 @@ div#mdl-dialog-content {
     -moz-transition: all 0.3s;
     transition: all 0.3s;
 }
-.mdl-dialog::backdrop {
+.mdl-dialog#dialog1::backdrop {
     position: fixed;
     top: 0;
     left: 0;
@@ -161,7 +191,7 @@ div#mdl-dialog-content {
     bottom: 0;
     background-color: rgba(255,255,255,0);
 }
-.mdl-dialog + .backdrop { /* polyfill */
+.mdl-dialog#dialog1 + .backdrop { /* polyfill */
    position: fixed;
     top: 0;
     left: 0;
@@ -250,30 +280,51 @@ body{
            margin: 48px 0 12px 22px;
         }
         div.panel{
-            max-width: 50%;
+            max-width: 75%;
             margin: auto;
             margin-top: calc(5% - 0px);
         }
+hata1#hata2 {
+    display: block;
+}
+dialog#dialog2 {
+    padding: 0;
+    top: 35%;
+    left: 240px;
+    display: block;
+    width: 350px;
+    height: 340px;
+        box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+.croppie-container .cr-boundary {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+dialog#dialog2:not([open]) {
+    display: none;
+}
+img#profile_photo {
+    margin: auto;
+    display: block;
+    margin-top: 20px;
+    border-bottom: 1px solid #e0e0e0;
+    box-shadow: 0 0 2px rgba(0,0,0,0.12), 0 2px 4px rgba(0,0,0,0.24);
+    border-radius: 100px;
+}
         details{
             transition: ease 200ms, opacity 200ms ease, transform 200ms ease;
             background:#fff;
-            font-size:16px;
             border-bottom:1px solid #e0e0e0;
               box-shadow:0 0 2px rgba(0,0,0,0.12),0 2px 4px rgba(0,0,0,0.24);
             display:flex; }
 
-        input#iptal_1 {
+        input#iptal_1,  input#kaydet_1, input#kaydet_2, input#iptal_2 ,input#kaydet_3, input#iptal_3{
         color: #4285f4;
         width: 88px;
         text-align: center;
         float: right;}
         
-        input#kaydet_1 {
-        color: #4285f4;
-        width: 88px;
-        text-align: center;
-        float: right;}
-
         input#kaydet_1:hover {
         background-color: rgba(66, 133, 244, 0.2);}
 
