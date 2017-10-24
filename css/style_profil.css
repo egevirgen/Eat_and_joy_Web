@@ -19,7 +19,7 @@ main.mdl-layout__content {
     margin-top: -60px;
     left: 70px;
     min-width: 56px;
-    background: #db4437f0;
+    background: rgba(219, 68, 55, 0.9);
 }
 .mdl-button:hover {
     background-color: #ca3125;
@@ -152,6 +152,9 @@ hr#dialog_line_1 {
     margin-top: 20px;
     margin-bottom: 0px;
 }
+hr#dialog2_hr {
+    margin: 0;
+}
 .dialog-profile-email {
     color: rgba(0, 0, 0, 0.54);
     font-size: 13px;
@@ -234,6 +237,10 @@ bizim_firma_adi1 {
     font-family: serif;
     color: #212121;
 }
+li#firma_adi_value, li#adres_value {
+    text-transform: capitalize;
+}
+
 
 bizim_firma_adi2 {
     font-family: sans-serif;
@@ -252,6 +259,12 @@ hgroup {
 }
 div#progress {
     width: 100%;
+}
+input#kaydet_dialog, input#iptal_dialog {
+    text-align: center;
+    height: 45px;
+    padding: 0;
+    color: #4285f4;
 }
 html, body {margin:0; padding:0; width:100%; height:100%; overflow:hidden;}
 body{
@@ -288,14 +301,21 @@ hata1#hata2 {
     display: block;
 }
 dialog#dialog2 {
+    transition: ease 0.5s;
     padding: 0;
     top: 35%;
     left: 240px;
     display: block;
-    width: 350px;
-    height: 340px;
-        box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
+}
+img {
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -o-crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    -ms-interpolation-mode: nearest-neighbor;
 }
 .croppie-container .cr-boundary {
     border-top-left-radius: 5px;
@@ -319,7 +339,7 @@ img#profile_photo {
               box-shadow:0 0 2px rgba(0,0,0,0.12),0 2px 4px rgba(0,0,0,0.24);
             display:flex; }
 
-        input#iptal_1,  input#kaydet_1, input#kaydet_2, input#iptal_2 ,input#kaydet_3, input#iptal_3{
+        input#iptal_1,  input#kaydet_1, input#kaydet_2, input#iptal_2 ,input#kaydet_3, input#iptal_3, input#iptal_2_1, input#kaydet_2_1{
         color: #4285f4;
         width: 88px;
         text-align: center;
@@ -361,6 +381,7 @@ img#profile_photo {
             color:#212121;
             position: relative;
             font-size: 15px;
+            list-style: none;
         }
         summary:hover{
             background:#eeeeee;
