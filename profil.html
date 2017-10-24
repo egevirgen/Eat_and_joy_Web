@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue-light_blue.min.css" />  
 	<!-- Custom Stylesheet -->
-	<link rel="stylesheet" href="css/style_profil.css">
+    	<link rel="stylesheet" href="css/style_profil.css">
     <link rel="stylesheet" href="css/croppie.css" />
 	<link rel="stylesheet" type="text/css" href="css/dialog-polyfill.css" />
 </head>
@@ -20,7 +20,7 @@
      
   <dialog id="dialog1"class="mdl-dialog">
       <div id="mdl-dialog-content">
-          <img class="dialog-profile-photo" id="dialog-profile-photo" src="starbucks.png">
+          <img class="dialog-profile-photo" id="dialog-profile-photo" src="placeholder.jpg">
           <div class="dialog-profile-container">
               <div id="dialog-profile-name" class="dialog-profile-name"></div>
           <div id="dialog-profile-email" class="dialog-profile-email"></div>
@@ -68,15 +68,24 @@
       </div>
   <main class="mdl-layout__content">
         <dialog id="dialog2" class="mdl-dialog">
+            <div>
                     <div id="vanilla-demo" class="croppie-container">
                        </div>
+            <hr id="dialog2_hr">
+         <buttons>
+                  <input type="submit" name="kaydet" value="KAYDET" id="kaydet_dialog"  />
+            <input type="submit" name="iptal" value="İPTAL" id="iptal_dialog"  />
+                </buttons>
+                </div>
   </dialog>
          <div id="progress" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
           <div id="content" class="content">
-              <img id="profile_photo" src="starbucks.png" height=200 width=200>
+              <img id="profile_photo" src="placeholder.jpg" height=200 width=200>
               <button id="profile_change" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect">
 <i class="material-icons">photo_camera</i>
               </button>
+              <div id="map" style="width:50%;height:650px;padding:0;margin:0;"></div>
+
 				<div class="panel">
     <h1>Firma Profili</h1>
                         <details>
@@ -133,6 +142,69 @@
         <summary id="summary_3">
            <ul>
                <li>Parola değiştir</li>
+               <li id="sifre_sifirlama" class="titleValue">Şifre sıfırlama maili almak için tıklayınız</li>
+                       <li></li>
+           </ul>
+        </summary>
+       
+    </details>
+                    
+                    <input id="picker" type='file' accept="image/*" style="visibility: hidden"/>
+
+</div>
+              	<div class="panel">
+    <h1>Firma Detayları</h1>
+                        <details>
+        <summary id="sabit" onclick='return false;'>
+            <ul>
+                <li>İletişim e-maili</li>
+                <li id="firma_email_value" class="titleValue"></li>
+                <li></li>
+            </ul>
+        </summary>
+    </details>
+    <details>
+        <summary id="summary_2_1">
+           <ul>
+               <li>Adres</li>
+               <li id="adres_value" class="titleValue"></li>
+                       <li></li>
+           </ul>
+        </summary>
+        <div class="inner_content">
+               <li>Adres Bilgisi</li>
+                <input type="firmaadi_" name="firmaadi_" placeholder="Adres Bilgisi" id="inner_adres_value"/>
+            <hr>
+            <buttons>
+                  <input type="submit" name="kaydet" value="KAYDET" id="kaydet_2_1"  />
+            <input type="submit" name="iptal" value="İPTAL" id="iptal_2_1"  />
+                </buttons>
+        </div>
+    </details>
+    <details>
+        <summary id="summary_2">
+            <ul>
+                <li>İletişim telefon numarası</li>
+                <li id="firma_telefon_value" class="titleValue"></li>
+                <li></li>
+            </ul>
+        </summary>
+        <div class="inner_content">
+                <li>İletişim telefon numarası</li>
+            <span id="span_tel">(+90) </span>
+                <input type="telefon" name="firmaadi_" placeholder="İletişim telefon numarası" id="telefon_profile" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/>
+                    <hata1 id="hata2"></hata1>
+            <hr>
+            <buttons>
+                  <input type="submit" name="kaydet" value="KAYDET" id="kaydet_2"  />
+            <input type="submit" name="iptal" value="İPTAL" id="iptal_2"  />
+                </buttons>
+        </div>
+    </details>
+                        <details>
+        <summary id="summary_3">
+           <ul>
+               <li>Parola değiştir</li>
                <li id="firma_adi_value" class="titleValue">Şifre sıfırlama maili almak için tıklayınız</li>
                        <li></li>
            </ul>
@@ -160,6 +232,8 @@
   };
   firebase.initializeApp(config);
 </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANrTRej9oFnHc-ajgF2OGKC5D18RI8MkE&callback=myMap"
+    async defer></script>
     <script src="scripts/croppie.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
