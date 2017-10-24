@@ -5,6 +5,7 @@ var signout = document.getElementById("ileri");
 var progress = document.getElementById("progress");
 var content = document.getElementById("content");
 var auth = firebase.auth();
+var storageRef = firebase.storage().ref();
 
 var dialogprofilephoto = document.getElementById("dialog-profile-photo");
 var dialogprofilename = document.getElementById("dialog-profile-name");
@@ -18,18 +19,28 @@ var inner_firma_adi = document.getElementById("firma_adi_profile");
 var inner_telefon = document.getElementById("telefon_profile");
 var kaydet_1 = document.getElementById("kaydet_1");
 var kaydet_2 = document.getElementById("kaydet_2");
+var kaydet_2_1 = document.getElementById("kaydet_2_1");
 var iptal_1 = document.getElementById("iptal_1");
 var iptal_2 = document.getElementById("iptal_2");
+var iptal_2_1 = document.getElementById("iptal_2_1");
 var summary_1 = document.getElementById("summary_1");
 var summary_2 = document.getElementById("summary_2");
 var summary_3 = document.getElementById("summary_3");
+var summary_2_1 = document.getElementById("summary_2_1");
 var hata_1 = document.getElementById("hata1");
 var hata_2 = document.getElementById("hata2");
 var firebase_user;
 var firebase_snapshot;
+var firebase_snapshot_2;
 
 var profile_fab = document.getElementById("profile_change");
+var profile_photo = document.getElementById("profile_photo");
 var picker = document.getElementById("picker");
+var kaydet_dialog = document.getElementById("kaydet_dialog");
+var iptal_dialog = document.getElementById("iptal_dialog");
+
+var inner_adres_value = document.getElementById("inner_adres_value");
+var adres_value = document.getElementById("adres_value");
 
 inner_telefon.maxLength="10";
 hata_2.style.color = 'blue';
@@ -37,15 +48,37 @@ hata_2.innerHTML="Telefon numaranızı başında sıfır olmadan yazınız";
 
         var el = document.getElementById('vanilla-demo');
           var vanilla = new Croppie(el, {
-    viewport: { width: 200, height: 200 },
-    boundary: { width: 350, height: 350 },
+    viewport: { width: 300, height: 300 },
+    boundary: { width: 400, height: 400 },
     showZoomer: true
 });
+
+function myMap() {
+  var mapCanvas = document.getElementById("map");
+  var myCenter=new google.maps.LatLng(39.7091251,34.8628838);
+  var mapOptions = {center: myCenter, zoom: 6 , streetViewControl: false};
+  var map = new google.maps.Map(mapCanvas, mapOptions);
+  var myLatLng;
+
+  google.maps.event.addListener(map, 'click', function(event) {
+     var myLatLng = {lat:event.latLng.lat(),lng:event.latLng.lng()};
+     marker.setPosition(myLatLng);
+      console.log(myLatLng)
+
+  });
+  var marker = new google.maps.Marker({
+       position: myLatLng,
+       map: map,
+       animation: google.maps.Animation.BOUNCE
+     });
+}
+
+
 
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
       firebase_user=user;
-      return firebase.database().ref('/Companies/' + user.uid).once('value').then(function(snapshot){
+      firebase.database().ref('/Companies/' + user.uid).once('value').then(function(snapshot){
     firebase_snapshot=snapshot;
     progress.style.visibility='hidden';  
     content.style.opacity='1'
@@ -56,7 +89,24 @@ firebase.auth().onAuthStateChanged(function(user) {
     inner_telefon.value=snapshot.val().company_phone
     firmaemailvalue.innerHTML=snapshot.val().company_email
     firmatelefonvalue.innerHTML="(+90) "+snapshot.val().company_phone
+          
 });
+       storageRef.child(firebase_user.uid+"/profile.png").getDownloadURL().then(function(url) {
+
+        profile_photo.src = url;
+        dialogprofilephoto.src = url;
+}).catch(function(error) {
+  // Handle any errors
+});
+      
+            firebase.database().ref('/Location_Inf/' + user.uid).once('value').then(function(snapshot){
+    firebase_snapshot_2=snapshot;
+                adres_value.innerHTML = firebase_snapshot_2.val().firma_adres
+                inner_adres_value.value = firebase_snapshot_2.val().firma_adres
+});
+     
+      
+      
   } else {
     window.open ('index.html','_self',false)
   }
@@ -80,6 +130,17 @@ iptal_2.addEventListener('click', function (){
            summary_2.click();
     hata_2.style.color = 'blue';
              hata_2.innerHTML="Telefon numaranızı başında sıfır olmadan yazınız"; 
+});
+
+iptal_2_1.addEventListener('click', function (){
+        try {
+     inner_adres_value.value=firebase_snapshot_2.val().firma_adres
+}
+catch(err) {
+  
+}        
+           progress.style.visibility='hidden';  
+           summary_2_1.click();
 });
 
 kaydet_1.addEventListener('click', function (){
@@ -118,6 +179,17 @@ kaydet_2.addEventListener('click', function (){
         });
 }});
 
+kaydet_2_1.addEventListener('click', function (){
+         progress.style.visibility='visible';  
+         firebase.database().ref('Location_Inf/' + firebase_user.uid).update({
+    firma_adres: inner_adres_value.value     
+  }).then(function() {
+            progress.style.visibility='hidden';
+            summary_2_1.click();
+            adres_value.innerHTML=inner_adres_value.value
+        });
+});
+
 window.addEventListener('load', function() {
   document.querySelector('input[type="file"]').addEventListener('change', function() {
       if (this.files && this.files[0]) {
@@ -135,9 +207,7 @@ window.addEventListener('load', function() {
     url: url_photo
 });
 //on button click
-vanilla.result('blob').then(function(blob) {
-    // do something with cropped blob
-});
+
 
           
          
@@ -200,3 +270,19 @@ dialog.addEventListener('click', function (event) {
  profile_fab.onclick = function () { 
         picker.click();
      return false;};
+
+kaydet_dialog.addEventListener('click', function (){
+        vanilla.result('blob').then(function(blob) {
+   var profileRef = storageRef.child(firebase_user.uid+"/profile.png");
+            profileRef.put(blob).then(function(snapshot) {
+                       var objectURL = URL.createObjectURL(blob);
+                       profile_photo.src = objectURL;
+                       dialogprofilephoto.src = objectURL;
+                      dialog2.close();
+});
+});
+});
+
+iptal_dialog.addEventListener('click', function (){
+                     dialog2.close();
+});
