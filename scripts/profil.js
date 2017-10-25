@@ -1,6 +1,7 @@
 var profile_dialog = document.getElementById("profile_dialog");
 var dialog = document.getElementById("dialog1");
 var dialog2 = document.getElementById("dialog2");
+var dialog3 = document.getElementById("dialog3");
 var signout = document.getElementById("ileri");
 var progress = document.getElementById("progress");
 var content = document.getElementById("content");
@@ -26,6 +27,7 @@ var iptal_2_1 = document.getElementById("iptal_2_1");
 var summary_1 = document.getElementById("summary_1");
 var summary_2 = document.getElementById("summary_2");
 var summary_3 = document.getElementById("summary_3");
+var konum = document.getElementById("konum");
 var summary_2_1 = document.getElementById("summary_2_1");
 var hata_1 = document.getElementById("hata1");
 var hata_2 = document.getElementById("hata2");
@@ -35,9 +37,17 @@ var firebase_snapshot_2;
 
 var profile_fab = document.getElementById("profile_change");
 var profile_photo = document.getElementById("profile_photo");
+
 var picker = document.getElementById("picker");
+
 var kaydet_dialog = document.getElementById("kaydet_dialog");
 var iptal_dialog = document.getElementById("iptal_dialog");
+
+var iptal_dialog_konum = document.getElementById("iptal_dialog_konum");
+var kaydet_dialog_konum = document.getElementById("kaydet_dialog_konum");
+
+var firma_konum_value = document.getElementById("firma_konum_value");
+
 
 var inner_adres_value = document.getElementById("inner_adres_value");
 var adres_value = document.getElementById("adres_value");
@@ -55,22 +65,76 @@ hata_2.innerHTML="Telefon numaranızı başında sıfır olmadan yazınız";
 
 function myMap() {
   var mapCanvas = document.getElementById("map");
-  var myCenter=new google.maps.LatLng(39.7091251,34.8628838);
+  var geocoder = new google.maps.Geocoder();
+  var myCenter=new google.maps.LatLng(48.805470223177466,45.419921875);
   var mapOptions = {center: myCenter, zoom: 6 , streetViewControl: false};
   var map = new google.maps.Map(mapCanvas, mapOptions);
   var myLatLng;
-
+  
+  geocoder.geocode( {'address' : "Turkey"}, function(results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+        map.setCenter(results[0].geometry.location);
+    }
+});
+    
   google.maps.event.addListener(map, 'click', function(event) {
      var myLatLng = {lat:event.latLng.lat(),lng:event.latLng.lng()};
      marker.setPosition(myLatLng);
-      console.log(myLatLng)
-
+     infowindow.open(map, marker);
   });
+    
+  var infowindow = new google.maps.InfoWindow({
+    content: "Seçili Konumunuz"
+  });
+
   var marker = new google.maps.Marker({
        position: myLatLng,
        map: map,
-       animation: google.maps.Animation.BOUNCE
+       draggable: true,
+       title: 'Seçili Konumunuz'
      });
+    
+    marker.addListener('click', function() {
+    map.setCenter(marker.getPosition())
+    map.setZoom(map.getZoom()+2);
+  });
+    
+     konum.onclick = function () { 
+          dialog3.showModal();
+          google.maps.event.trigger(map, "resize");
+       if(firebase_snapshot_2.val().Lat != undefined)
+           {    var kayitli_merkez = {lat:parseFloat(firebase_snapshot_2.val().Lat),lng:parseFloat(firebase_snapshot_2.val().Long)};
+                marker.setPosition(kayitli_merkez);
+                map.setCenter(kayitli_merkez);
+                map.setZoom(15);
+                infowindow.open(map, marker);
+           }
+         else{
+                    geocoder.geocode( {'address' : "Turkey"}, function(results, status) {
+           if (status == google.maps.GeocoderStatus.OK) {
+               map.setCenter(results[0].geometry.location);
+           }
+});
+         }
+    
+     return false;};
+    
+    kaydet_dialog_konum.addEventListener('click', function (){
+        if(marker.getPosition()==undefined){
+            console.log("burda");
+        }
+        else{
+            firebase.database().ref('Location_Inf/' + firebase_user.uid).update({
+    Lat: marker.getPosition().lat(),
+    Long: marker.getPosition().lng()
+  }).then(function() {
+              firma_konum_value.innerHTML = "Firma konumunuz:<br>Enlem: "+ marker.getPosition().lat() +" Boylam: "+marker.getPosition().lng()
+              dialog3.close();
+        });
+
+        }
+        
+});
 }
 
 
@@ -81,6 +145,7 @@ firebase.auth().onAuthStateChanged(function(user) {
       firebase.database().ref('/Companies/' + user.uid).once('value').then(function(snapshot){
     firebase_snapshot=snapshot;
     progress.style.visibility='hidden';  
+    progress.style.height='0px';  
     content.style.opacity='1'
     dialogprofilename.innerHTML=snapshot.val().company_name
     dialogprofileemail.innerHTML=snapshot.val().company_email
@@ -100,9 +165,16 @@ firebase.auth().onAuthStateChanged(function(user) {
 });
       
             firebase.database().ref('/Location_Inf/' + user.uid).once('value').then(function(snapshot){
-    firebase_snapshot_2=snapshot;
+                firebase_snapshot_2=snapshot;
+                if(firebase_snapshot_2.val().firma_adres != "" &  firebase_snapshot_2.val().firma_adres != undefined)
+                {
                 adres_value.innerHTML = firebase_snapshot_2.val().firma_adres
                 inner_adres_value.value = firebase_snapshot_2.val().firma_adres
+                }
+                if(firebase_snapshot_2.val().Lat != undefined){
+                firma_konum_value.innerHTML = "Firma konumunuz:<br>Enlem: "+ firebase_snapshot_2.val().Lat +" Boylam: "+firebase_snapshot_2.val().Long
+                }
+                
 });
      
       
@@ -119,14 +191,17 @@ signout.addEventListener('click', function (){
 
 iptal_1.addEventListener('click', function (){
             inner_firma_adi.value=firmaadivalue.innerHTML;
-           progress.style.visibility='hidden';  
+           progress.style.visibility='hidden';
+           progress.style.height='0px';
            summary_1.click();
 });
 
 iptal_2.addEventListener('click', function (){
         
            inner_telefon.value=firebase_snapshot.val().company_phone
-           progress.style.visibility='hidden';  
+           progress.style.visibility='hidden';
+           progress.style.height='0px';  
+
            summary_2.click();
     hata_2.style.color = 'blue';
              hata_2.innerHTML="Telefon numaranızı başında sıfır olmadan yazınız"; 
@@ -139,7 +214,8 @@ iptal_2_1.addEventListener('click', function (){
 catch(err) {
   
 }        
-           progress.style.visibility='hidden';  
+           progress.style.visibility='hidden';
+           progress.style.height='0px';  
            summary_2_1.click();
 });
 
@@ -149,10 +225,12 @@ kaydet_1.addEventListener('click', function (){
            }
     else{
          progress.style.visibility='visible';  
+            progress.style.height='7px';  
          firebase.database().ref('Companies/' + firebase_user.uid).update({
     company_name: inner_firma_adi.value     
   }).then(function() {
             progress.style.visibility='hidden';
+                    progress.style.height='0px';
             summary_1.click();
             firmaadivalue.innerHTML=inner_firma_adi.value
             dialogprofilename.innerHTML=inner_firma_adi.value
@@ -168,12 +246,14 @@ kaydet_2.addEventListener('click', function (){
             }
     else{
          progress.style.visibility='visible';  
+               progress.style.height='7px';
          firebase.database().ref('Companies/' + firebase_user.uid).update({
     company_phone: inner_telefon.value     
   }).then(function() {
             hata_2.style.color = 'blue';
              hata_2.innerHTML="Telefon numaranızı başında sıfır olmadan yazınız"; 
             progress.style.visibility='hidden';
+                    progress.style.height='0px';
             summary_2.click();
             firmatelefonvalue.innerHTML="(+90) "+inner_telefon.value
         });
@@ -181,12 +261,18 @@ kaydet_2.addEventListener('click', function (){
 
 kaydet_2_1.addEventListener('click', function (){
          progress.style.visibility='visible';  
+           progress.style.height='7px';
          firebase.database().ref('Location_Inf/' + firebase_user.uid).update({
     firma_adres: inner_adres_value.value     
   }).then(function() {
             progress.style.visibility='hidden';
+                    progress.style.height='0px';
             summary_2_1.click();
-            adres_value.innerHTML=inner_adres_value.value
+            if(inner_adres_value.value==""){
+                adres_value.innerHTML="Adres bilginizi girmek için tıklayınız"
+            }else{
+                adres_value.innerHTML=inner_adres_value.value
+            }
         });
 });
 
@@ -196,13 +282,7 @@ window.addEventListener('load', function() {
           var img = document.getElementById('myImg'); 
           var url_photo = URL.createObjectURL(this.files[0]);
              dialog2.showModal();
-            dialog2.style.opacity = 1; //For real browsers;
-    dialog2.style.filter = "alpha(opacity=100)"; //For IE;
-    dialog2.style.webkitTransform = "scale(1)";
-    dialog2.style.MozTransform = "scale(1)";
-    dialog2.style.msTransform = "scale(1)";
-    dialog2.style.OTransform = "scale(1)";
-    dialog2.style.transform = "scale(1)";
+           
           vanilla.bind({
     url: url_photo
 });
@@ -217,23 +297,30 @@ window.addEventListener('load', function() {
 
  summary_3.onclick = function () { 
                 progress.style.visibility='visible';  
+            progress.style.height='7px';
      auth.sendPasswordResetEmail(firebase_snapshot.val().company_email).then(function() {
          progress.style.visibility='hidden';  
+                progress.style.height='0px';
          alert("Şifre sıfırlama maili başarıyla gönderildi.");
 
      }).catch(function(error) {
-                    progress.style.visibility='hidden';  
+                    progress.style.visibility='hidden'; 
+                progress.style.height='0px';
          console.log(error.message)
            alert("Hata oluştu.");
 
      });
      return false;};
 
+
 if (! dialog.showModal) {
       dialogPolyfill.registerDialog(dialog);
     }
  if (! dialog2.showModal) {
       dialogPolyfill.registerDialog(dialog2);
+    }
+ if (! dialog3.showModal) {
+      dialogPolyfill.registerDialog(dialog3);
     }
 
 profile_dialog.addEventListener('click', function () { 
@@ -278,11 +365,16 @@ kaydet_dialog.addEventListener('click', function (){
                        var objectURL = URL.createObjectURL(blob);
                        profile_photo.src = objectURL;
                        dialogprofilephoto.src = objectURL;
-                      dialog2.close();
+                       dialog2.close();
 });
 });
 });
 
 iptal_dialog.addEventListener('click', function (){
-                     dialog2.close();
+                    dialog2.close();
+});
+
+
+iptal_dialog_konum.addEventListener('click', function (){
+                    dialog3.close();
 });
