@@ -48,6 +48,8 @@
         </label>
     </div>
   </header>
+                   <div id="progress" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
+
       <div class="mdl-layout__drawer">
         <header class="demo-drawer-header">
               <hgroup>
@@ -78,14 +80,24 @@
                 </buttons>
                 </div>
   </dialog>
-         <div id="progress" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
+      <dialog id="dialog3" class="mdl-dialog">
+            <div>
+                  <div id="map" style="width:100%;height:400px;padding:0;margin:0;"></div>
+                <h1 id="harita_bilgi">Haritaya tıklayarak firmanızın konumunu işaretleyip ardından kaydet tuşuna basınız</h1>
+                
+
+         <buttons>
+                  <input type="submit" name="kaydet" value="KAYDET" id="kaydet_dialog_konum"  />
+            <input type="submit" name="iptal" value="İPTAL" id="iptal_dialog_konum"  />
+                </buttons>
+                </div>
+  </dialog>
           <div id="content" class="content">
               <img id="profile_photo" src="placeholder.jpg" height=200 width=200>
               <button id="profile_change" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect">
 <i class="material-icons">photo_camera</i>
               </button>
-              <div id="map" style="width:50%;height:650px;padding:0;margin:0;"></div>
-
+            
 				<div class="panel">
     <h1>Firma Profili</h1>
                         <details>
@@ -154,26 +166,17 @@
 </div>
               	<div class="panel">
     <h1>Firma Detayları</h1>
-                        <details>
-        <summary id="sabit" onclick='return false;'>
-            <ul>
-                <li>İletişim e-maili</li>
-                <li id="firma_email_value" class="titleValue"></li>
-                <li></li>
-            </ul>
-        </summary>
-    </details>
-    <details>
+                    <details>
         <summary id="summary_2_1">
            <ul>
-               <li>Adres</li>
-               <li id="adres_value" class="titleValue"></li>
+               <li>Açık adres</li>
+               <li id="adres_value" class="titleValue">Adres bilginizi girmek için tıklayınız</li>
                        <li></li>
            </ul>
         </summary>
         <div class="inner_content">
-               <li>Adres Bilgisi</li>
-                <input type="firmaadi_" name="firmaadi_" placeholder="Adres Bilgisi" id="inner_adres_value"/>
+               <li>Açık adres</li>
+                <input type="firmaadi_" name="firmaadi_" placeholder="Açık adres" id="inner_adres_value"/>
             <hr>
             <buttons>
                   <input type="submit" name="kaydet" value="KAYDET" id="kaydet_2_1"  />
@@ -181,6 +184,16 @@
                 </buttons>
         </div>
     </details>
+                        <details>
+        <summary id="konum">
+            <ul>
+                <li>Konum Seç</li>
+                <li id="firma_konum_value" class="titleValue">Haritada firma konumunuzu belirlemek için tıklayınız</li>
+                <li></li>
+            </ul>
+        </summary>
+    </details>
+    
     <details>
         <summary id="summary_2">
             <ul>
