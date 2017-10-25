@@ -237,10 +237,9 @@ bizim_firma_adi1 {
     font-family: serif;
     color: #212121;
 }
-li#firma_adi_value, li#adres_value {
+li#firma_adi_value, li#adres_value:first-letter {
     text-transform: capitalize;
 }
-
 
 bizim_firma_adi2 {
     font-family: sans-serif;
@@ -259,6 +258,8 @@ hgroup {
 }
 div#progress {
     width: 100%;
+    height: 7px;
+    left: 270px;
 }
 input#kaydet_dialog, input#iptal_dialog {
     text-align: center;
@@ -300,13 +301,37 @@ body{
 hata1#hata2 {
     display: block;
 }
+input#kaydet_dialog_konum, input#iptal_dialog_konum {
+    height: 45px;
+}
+h1#harita_bilgi {
+        color: #615f5f;
+    margin-bottom: 20px;
+        margin-left: 0px;
+    margin-top: 40px;
+    text-align: center;
+}
+div#map {
+    border-radius: 5px;
+    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+}
 dialog#dialog2 {
     transition: ease 0.5s;
     padding: 0;
-    top: 35%;
+    top: 84px;
     left: 240px;
     display: block;
     width: 400px;
+    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+dialog#dialog3 {
+    transition: ease 0.5s;
+    padding: 0;
+    top: 84px;
+    left: 240px;
+    display: block;
+    width: 40%;
     box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
 }
@@ -321,7 +346,7 @@ img {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
-dialog#dialog2:not([open]) {
+dialog#dialog2:not([open]),dialog#dialog3:not([open]) {
     display: none;
 }
 img#profile_photo {
@@ -339,7 +364,7 @@ img#profile_photo {
               box-shadow:0 0 2px rgba(0,0,0,0.12),0 2px 4px rgba(0,0,0,0.24);
             display:flex; }
 
-        input#iptal_1,  input#kaydet_1, input#kaydet_2, input#iptal_2 ,input#kaydet_3, input#iptal_3, input#iptal_2_1, input#kaydet_2_1{
+        input#iptal_1,  input#kaydet_1, input#kaydet_2, input#iptal_2 ,input#kaydet_3, input#iptal_3, input#iptal_2_1, input#kaydet_2_1,input#iptal_dialog_konum,input#kaydet_dialog_konum{
         color: #4285f4;
         width: 88px;
         text-align: center;
@@ -432,5 +457,9 @@ img#profile_photo {
             bottom: 0;
             right: 5px;
             width: 6%;
+        }  
+summary#konum::after {
+            content: "my_location";
+            
         }  
         .titleValue{ color: #757575; }  
